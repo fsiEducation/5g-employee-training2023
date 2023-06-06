@@ -15,7 +15,7 @@ public class Work1 {
 		
 		//1-3
 		/*
-		Date date1 = getDate("2023/06/06");
+		Date date1 = getDate("2023/06/05");
 		Date date2 = getDate("2023/06/05");
 		System.out.println(getDateDiff(date1,date2));
 		*/
