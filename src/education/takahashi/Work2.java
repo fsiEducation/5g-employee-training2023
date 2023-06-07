@@ -23,12 +23,12 @@ public class Work2 {
 		*/
 		
 		//2-3
-		String number = "123456789";
+		String number = "123456";
 		System.out.println(format(number));
 		
 		//2-4
 		/*
-		String n = "1,8,4,5,6,9,2,3,7";
+		String n = "";
 		System.out.println(getSortValues(n));
 		*/
 		
@@ -49,78 +49,54 @@ public class Work2 {
 	}
 	
 	//2-3
-	/*
-	public static String format(String str) {
-		String[] strs = str.split("");
-		String[] reverse = new String[strs.length];
-		int index=0;
-		for(int i=strs.length-1; i>0; i--) {
-			reverse[index]=strs[i];
-			index++;
-		}
-		reverse[index]=strs[0];
-		
-		String reans="";
-		for(int i=0; i<reverse.length-1; i++) {
-			if((i+1)%3==0) {
-				reans=reans+reverse[i]+",";
-			}
-			else {
-				reans=reans+reverse[i];
-			}
-		}
-		reans= reans+reverse[reverse.length-1];
-		
-		String[] tmp = reans.split("");
-		String ans="";
-		for(int i=tmp.length-1; i>0; i--) {
-			ans = ans + tmp[i];
-		}
-		ans = ans + tmp[0];
-		return ans;
-	}
-	*/
-	//2-3
 	public static String format(String str) {
 		String[] strs = str.split("");
 		String tmp="";
 		int len = strs.length;
-		if(len%3==0) {
-			for(int i=0; i<len-1; i++) {
-				if((i+1)%3==0) {
-					tmp= tmp + strs[i]+",";
-				}
-				else {
-					tmp= tmp + strs[i];
-				}
+		if(len<3) {
+			for(int i=0; i<len; i++) {
+				tmp+=strs[i];
 			}
-			tmp= tmp + strs[len-1];
-		}
-		else if(len%3==1) {
-			tmp = strs[0]+"," ;
-			for(int i=1; i<len-1; i++) {
-				if(i%3==0) {
-					tmp= tmp + strs[i]+",";
-				}
-				else {
-					tmp= tmp + strs[i];
-				}
-			}
-			tmp= tmp + strs[len-1];
+			return tmp;
 		}
 		else {
-			tmp = strs[0]+strs[1]+"," ;
-			for(int i=2; i<len-1; i++) {
-				if((i-1)%3==0) {
-					tmp= tmp + strs[i]+",";
+			if(len%3==0) {
+				for(int i=0; i<len-1; i++) {
+					if((i+1)%3==0) {
+						tmp= tmp + strs[i]+",";
+					}
+					else {
+						tmp= tmp + strs[i];
+					}
 				}
-				else {
-					tmp= tmp + strs[i];
-				}
+				tmp= tmp + strs[len-1];
 			}
-			tmp= tmp + strs[len-1];
+			else if(len%3==1) {
+				tmp = strs[0]+"," ;
+				for(int i=1; i<len-1; i++) {
+					if(i%3==0) {
+						tmp= tmp + strs[i]+",";
+					}
+					else {
+						tmp= tmp + strs[i];
+					}
+				}
+				tmp= tmp + strs[len-1];
+			}
+			else {
+				tmp = strs[0]+strs[1]+"," ;
+				for(int i=2; i<len-1; i++) {
+					if((i-1)%3==0) {
+						tmp= tmp + strs[i]+",";
+					}
+					else {
+						tmp= tmp + strs[i];
+					}
+				}
+				tmp= tmp + strs[len-1];
+			}
+			return tmp;
 		}
-		return tmp;
 	}
 	
 	//2-4
