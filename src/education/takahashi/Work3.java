@@ -1,77 +1,78 @@
 package src.education.takahashi;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Work3 {
 
 	public static void main(String[] args) {
 		//3-1
 		//System.out.println(checkNumber("112a5"));
-		
+
 		//3-2
-		//System.out.println(checkLength("12345678"));
-		
+		//System.out.println(checkLength(""));
+
 		//3-3
-		//System.out.println(checkYMD("2020","2","30"));
-		
+		/*
+		String year = "2020";
+		String month = "12";
+		String day = "29";
+		System.out.println(checkYMD(year, month, day));
+		*/
 		//3-4
-		System.out.println(checkString("12asdf"));
+		System.out.println(checkString(""));
 	}
-	
-	//3-1
+
+	//3-1 //修正substring
 	public static boolean checkNumber(String str) {
-	     boolean isNum= true;
-	     if((str.charAt(0))== '-') {
-	    	 for (int i = 1; i < str.length(); i++) {
-			     if (!Character.isDigit(str.charAt(i))) {
-			         isNum = false;
-			      }
-			 }
-	     }
-	     else {
-	    	for (int i = 0; i < str.length(); i++) {
-		       if (!Character.isDigit(str.charAt(i))) {
-		           isNum = false;
-		       }
-		     }
-	     }
-	     
-	     return isNum;
+		if (str == "") {
+			return false;
+		}
+
+		if ((str.charAt(0)) == '-') {
+			for (int i = 1; i < str.length(); i++) {
+				if (!Character.isDigit(str.charAt(i))) {
+					return false;
+				}
+			}
+		} else {
+			for (int i = 0; i < str.length(); i++) {
+				if (!Character.isDigit(str.charAt(i))) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
-	
+
 	//3-2
 	public static boolean checkLength(String str) {
-		String[] strs = str.split("");
-		return strs.length<=8;
+		return str.length() <= 8;
 	}
 	
 	//3-3
 	public static boolean checkYMD(String year, String month, String day) {
-		if(month.length()==1) {
-			month="0"+month;
+		Calendar cl = Calendar.getInstance();
+		SimpleDateFormat slash = new SimpleDateFormat("yyyy/MM/dd");
+
+		int yearNum = Integer.parseInt(year);
+		int monthNum = Integer.parseInt(month) - 1;
+		int dayNum = Integer.parseInt(day);
+
+		try {
+			cl.set(yearNum, monthNum, dayNum);
+			cl.setLenient(false);
+			slash.format(cl.getTime());
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
-		if(day.length()==1) {
-			day="0"+day;
-		}
-		
-		String strDate = year+"/"+month+"/"+day;
-		if (strDate == null || strDate.length() != 10) {
-	        System.out.println(strDate+"は不正な文字列です");
-	        return false;
-	    }
-	    DateFormat format = DateFormat.getDateInstance();
-	    format.setLenient(false);
-	    try {
-	        format.parse(strDate);
-	        return true;
-	    } catch (Exception e) {
-	        return false;
-	    }
 	}
-	
+
 	//3-4
 	public static boolean checkString(String str) {
-		return str.matches("^[-?a-zA-Z0-9]*$");
+		return str.matches("^[\\w\\-]+$");
 	}
 
 }
