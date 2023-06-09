@@ -23,14 +23,14 @@ public class Work2 {
 		*/
 		
 		//2-3
-		String number = "123456";
+		/*String number = "123456";
 		System.out.println(format(number));
-		
+		*/
 		//2-4
-		/*
+		
 		String n = "";
 		System.out.println(getSortValues(n));
-		*/
+		
 		
 	}
 	
@@ -49,7 +49,10 @@ public class Work2 {
 	}
 	
 	//2-3
-	public static String format(String str) {
+	public static String format(String str) throws IllegalArgumentException {
+		if(!Work3.checkNumber(str)) {
+			throw new IllegalArgumentException("入力は数字ではありません");
+		}
 		String[] strs = str.split("");
 		String tmp="";
 		int len = strs.length;
@@ -99,8 +102,44 @@ public class Work2 {
 		}
 	}
 	
+	//2-3
+		/*
+		public static String format(String str) {
+			String[] strs = str.split("");
+			String[] reverse = new String[strs.length];
+			int index=0;
+			for(int i=strs.length-1; i>0; i--) {
+				reverse[index]=strs[i];
+				index++;
+			}
+			reverse[index]=strs[0];
+			
+			String reans="";
+			for(int i=0; i<reverse.length-1; i++) {
+				if((i+1)%3==0) {
+					reans=reans+reverse[i]+",";
+				}
+				else {
+					reans=reans+reverse[i];
+				}
+			}
+			reans= reans+reverse[reverse.length-1];
+			
+			String[] tmp = reans.split("");
+			String ans="";
+			for(int i=tmp.length-1; i>0; i--) {
+				ans = ans + tmp[i];
+			}
+			ans = ans + tmp[0];
+			return ans;
+		}
+		*/
+	
 	//2-4
-	public static String getSortValues(String str) {
+	public static String getSortValues(String str) throws IllegalArgumentException {
+		if(!Work3.checkNumber(str)){
+			throw new IllegalArgumentException("入力は数字ではありません");
+		}
 		String[] numbers = str.split(",");
 		int[] nums = new int[numbers.length];
 		for(int i=0; i<numbers.length; i++) {

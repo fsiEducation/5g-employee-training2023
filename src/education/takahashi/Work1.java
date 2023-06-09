@@ -28,6 +28,9 @@ public class Work1 {
 	
 	//1-1
 	public static Date getDate(String str) throws ParseException  {
+		if(str=="") {
+			return null;
+		}
 		Date date = new SimpleDateFormat("yyyy/MM/dd").parse(str);
 		return date;
 	}
