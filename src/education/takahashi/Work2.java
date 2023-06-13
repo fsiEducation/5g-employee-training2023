@@ -7,7 +7,7 @@ public class Work2 {
 	public static void main(String[] args) {
 		//2-1
 		/*
-		String[] strs = {"a","b","d","g","h","i"};
+		String[] strs = {"a","b","c","d","e"};
 		System.out.println(getCsvString(strs));
 		*/
 				
@@ -23,24 +23,37 @@ public class Work2 {
 		*/
 		
 		//2-3
-		/*String number = "123456";
+		String number = "123";
 		System.out.println(format(number));
-		*/
-		//2-4
 		
+		//2-4
+		/*
 		String n = "";
 		System.out.println(getSortValues(n));
-		
+		*/
 		
 	}
 	
 	//2-1
-	public static String getCsvString(String[] strs) {
+	public static String getCsvString(String[] strs) throws IllegalArgumentException{
+		if(strs==null||strs.length==0) {
+			throw new IllegalArgumentException("配列がnullまたは空白です");
+		}
 		String str="";
 		for(int i=0; i<strs.length-1; i++) {
-			str=str+strs[i]+",";
+			if(strs[i]==" ") {
+				continue;
+			}
+			else {
+				str=str+strs[i]+",";
+			}
 		}
-		return str+strs[strs.length-1];
+		if(strs[strs.length-1]==" ") {
+			return str.substring(0, str.length()-1);
+		}
+		else {
+			return str+strs[strs.length-1];
+		}
 	}
 	
 	//2-2
@@ -53,16 +66,14 @@ public class Work2 {
 		if(!Work3.checkNumber(str)) {
 			throw new IllegalArgumentException("入力は数字ではありません");
 		}
-		String[] strs = str.split("");
-		String tmp="";
-		int len = strs.length;
-		if(len<3) {
-			for(int i=0; i<len; i++) {
-				tmp+=strs[i];
-			}
-			return tmp;
+		
+		int len = str.length();
+		if(len<=3) {
+			return str;
 		}
 		else {
+			String[] strs = str.split("");
+			String tmp="";
 			if(len%3==0) {
 				for(int i=0; i<len-1; i++) {
 					if((i+1)%3==0) {

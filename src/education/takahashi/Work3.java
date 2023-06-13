@@ -7,7 +7,7 @@ public class Work3 {
 
 	public static void main(String[] args) {
 		//3-1
-		//System.out.println(checkNumber("112a5"));
+		System.out.println(checkNumber("11ad"));
 
 		//3-2
 		//System.out.println(checkLength(""));
@@ -20,37 +20,20 @@ public class Work3 {
 		System.out.println(checkYMD(year, month, day));
 		*/
 		//3-4
-		System.out.println(checkString(""));
+		//System.out.println(checkString(""));
 	}
 
-	//3-1 //修正substring
+	//3-1 //修正
 	public static boolean checkNumber(String str) {
-		if (str == "") {
-			return false;
-		}
-
-		if ((str.charAt(0)) == '-') {
-			for (int i = 1; i < str.length(); i++) {
-				if (!Character.isDigit(str.charAt(i))) {
-					return false;
-				}
-			}
-		} else {
-			for (int i = 0; i < str.length(); i++) {
-				if (!Character.isDigit(str.charAt(i))) {
-					return false;
-				}
-			}
-		}
-
-		return true;
+		return str.matches("^-?[0-9]+$");
 	}
+
 
 	//3-2
 	public static boolean checkLength(String str) {
 		return str.length() <= 8;
 	}
-	
+
 	//3-3
 	public static boolean checkYMD(String year, String month, String day) {
 		Calendar cl = Calendar.getInstance();

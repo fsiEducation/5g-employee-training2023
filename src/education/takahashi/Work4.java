@@ -13,10 +13,10 @@ public class Work4 {
 		//System.out.println(getRandomValue());
 			
 		//4-3
-		//System.out.println(getDividedValue(952,45));
+		//System.out.println(getDividedValue(952,1));
 	
 		//4-4
-		//System.out.println(getTimesValue2(5.3,6.45));
+		System.out.println(getTimesValue2(5.3,6.45));
 	}
 	
 	//4-1
@@ -32,14 +32,17 @@ public class Work4 {
 	
 	//4-3
 	public static int getDividedValue (long data1, long data2) {
+		if(data2==0) {
+			throw new IllegalArgumentException("0で割ることはできません");
+		}
 		return Math.round(data1/data2);
 	}
 	
 	//4-4
 	public static String getTimesValue2(double data1, double data2) {
-		double ans = Math.ceil(data1)*Math.ceil(data2);
+		int ans = (int)(Math.ceil(data1)*Math.ceil(data2));
 		
-		return Integer.toHexString((int)ans);
+		return Integer.toHexString(ans);
 		
 	}
 
