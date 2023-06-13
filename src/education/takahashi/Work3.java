@@ -7,7 +7,7 @@ public class Work3 {
 
 	public static void main(String[] args) {
 		//3-1
-		System.out.println(checkNumber("11ad"));
+		System.out.println(checkNumber(""));
 
 		//3-2
 		//System.out.println(checkLength(""));
