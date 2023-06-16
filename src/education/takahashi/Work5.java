@@ -22,7 +22,7 @@ public class Work5 {
 		cl.setLenient(false);
 		
 		int index=0;
-		while(index<=365) {
+		while(index<365) {
 			System.out.print(slashDateFormat.format(cl.getTime()));
 			System.out.print("   "+japanDateFormat.format(cl.getTime()));
 			System.out.print("   "+simpleDateFormat.format(cl.getTime()));
