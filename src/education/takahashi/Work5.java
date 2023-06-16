@@ -7,6 +7,10 @@ import java.util.Calendar;
 public class Work5 {
 	//演習2
 	public static void main(String[] args) throws ParseException {
+		salaryCalender();
+	}
+	
+	public static void salaryCalender() {
 		Calendar cl = Calendar.getInstance();
 		SimpleDateFormat slashDateFormat = new SimpleDateFormat("yyyy/M/d");
 		SimpleDateFormat japanDateFormat = new SimpleDateFormat("yyyy年M月d日");
@@ -18,7 +22,7 @@ public class Work5 {
 		cl.setLenient(false);
 		
 		int index=0;
-		while(index<365) {
+		while(index<=365) {
 			System.out.print(slashDateFormat.format(cl.getTime()));
 			System.out.print("   "+japanDateFormat.format(cl.getTime()));
 			System.out.print("   "+simpleDateFormat.format(cl.getTime()));
